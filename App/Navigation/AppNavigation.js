@@ -1,10 +1,11 @@
 import { StackNavigator } from 'react-navigation'
-import LaunchScreen from '../Containers/LaunchScreen'
-
+import AuthenticationScreen from '../Containers/AuthenticationScreen'
+import LaunchScreen from '../Containers/LaunchScreen';
 import styles from './Styles/NavigationStyles'
 
 // Manifest of possible screens
 const PrimaryNav = StackNavigator({
+  AuthenticationScreen: { screen: AuthenticationScreen },
   LaunchScreen: { screen: LaunchScreen }
 }, {
   // Default config for all screens

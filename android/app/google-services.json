@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "708729882359",
+    "firebase_url": "https://monary-f1bad.firebaseio.com",
+    "project_id": "monary-f1bad",
+    "storage_bucket": "monary-f1bad.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:708729882359:android:84b4c6e27d2f7986",
+        "android_client_info": {
+          "package_name": "com.monary"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "708729882359-rnd7efhtlgq9prqr9pa0u9gr61aa8doh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBsHeNgEHMbh3B2uBSHJdVswR4LoeSaluU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

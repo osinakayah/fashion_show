@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { View, Image } from 'react-native'
-import Hr from 'react-native-hr-plus';
 import { Container, Header, Content, Footer, FooterTab, Button, Text, Icon } from 'native-base';
 import { connect } from 'react-redux'
 // Add Actions - replace 'Your' with whatever your reducer is called :)
-// import YourActions from '../Redux/YourRedux'
+import LoginActions from '../Redux/LoginRedux'
+import RegisterActions from '../Redux/RegisterRedux'
 import { Colors, Images } from '../Themes'
 // Styles
 import styles from './Styles/AuthenticationScreenStyle'
@@ -15,6 +15,49 @@ const LOGIN_SCREEN = 1;
 const REGISTER_SCREEN = 2;
 
 class AuthenticationScreen extends Component {
+  facebookAuth = (action, authenticatedUser) => {
+    const email = '';
+    const nickname = '';
+    const password = '';
+    const social = true;
+    if (action === LOGIN_SCREEN) {
+      this.props.attemptLogin(email, nickname, password)
+    }
+    else if (action === REGISTER_SCREEN) {
+
+    }
+
+  }
+  googleAuth = (action, authenticatedUser) => {
+    const email = '';
+    const nickname = '';
+    const password = '';
+    const social = true;
+    if (action === LOGIN_SCREEN) {
+
+    }
+    else if (action === REGISTER_SCREEN) {
+
+    }
+  }
+  twitterAuth = (action, authenticatedUser) => {
+    const email = '';
+    const nickname = '';
+    const password = '';
+    const social = true;
+    if (action === LOGIN_SCREEN) {
+
+    }
+    else if (action === REGISTER_SCREEN) {
+
+    }
+  }
+  registerUser = (data) => {
+    this.props.attemptRegister(data);
+  }
+  loginUser = (data) => {
+    this.props.attemptLogin(data);
+  }
   componentDidMount() {
     SplashScreen.hide();
   }
@@ -28,9 +71,9 @@ class AuthenticationScreen extends Component {
   renderScreen = () => {
     switch (this.state.selectedScreen) {
       case LOGIN_SCREEN:
-        return <LoginComponent/>
+        return <LoginComponent login={this.props.login} loginUser={this.loginUser} facebookAuth={this.facebookAuth} twitterAuth={this.twitterAuth} googleAuth={this.googleAuth} action={LOGIN_SCREEN} />
       case REGISTER_SCREEN:
-        return <RegisterComponent/>
+        return <RegisterComponent register={this.props.register} registerUser={this.registerUser} facebookAuth={this.facebookAuth} twitterAuth={this.twitterAuth} googleAuth={this.googleAuth} action={REGISTER_SCREEN} />
     }
   }
   render () {
@@ -62,11 +105,15 @@ class AuthenticationScreen extends Component {
 
 const mapStateToProps = (state) => {
   return {
+    register: state.register,
+    login: state.login
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    attemptLogin: (data) => dispatch(LoginActions.loginRequest(data)),
+    attemptRegister: (data) => dispatch(RegisterActions.registerRequest(data))
   }
 }
 

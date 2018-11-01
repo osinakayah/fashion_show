@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Monary</string>
+    <string name="facebook_app_id">279118139387555</string>
+    <string name="fb_login_protocol_scheme">fb279118139387555</string>
 </resources>

@@ -11,6 +11,7 @@ class ReduxNavigation extends React.Component {
     BackHandler.addEventListener('hardwareBackPress', () => {
       const { dispatch, nav } = this.props
       // change to whatever is your first screen, otherwise unpredictable results may occur
+      console.log(nav.routes);
       if (nav.routes.length === 1 && (nav.routes[0].routeName === 'LaunchScreen')) {
         return false
       }

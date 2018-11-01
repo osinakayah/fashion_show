@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import { View, Text } from 'react-native'
 import Hr from 'react-native-hr-plus';
 import styles from './Styles/RegisterComponentStyle'
-import { Form, Item, Input, Button, Icon, Grid, Row, Col } from 'native-base';
+import { Form, Item, Input, Button, Icon, Grid, Row, Col, Spinner } from 'native-base';
 
 export default class RegisterComponent extends Component {
   // // Prop type warnings
@@ -16,26 +16,52 @@ export default class RegisterComponent extends Component {
   // static defaultProps = {
   //   someSetting: false
   // }
-
+  constructor (props) {
+    super(props);
+    this.state = {
+      nickname: '',
+      uniqueIdentifier: '',
+      password: ''
+    }
+  }
+  renderRegisterButton = () => {
+    const {register} = this.props;
+    if (register.fetching) {
+      return (
+        <Button block style={styles.loginButton}>
+          <Spinner/>
+        </Button>
+      )
+    }
+    else {
+      return (
+        <Button block style={styles.loginButton} onPress={() => {this.props.registerUser({
+          uniqueIdentifier: this.state.uniqueIdentifier.trim(),
+          password: this.state.password,
+          nickname: this.state.nickname
+        })}}>
+          <Text style={styles.whiteText}>Sign Up</Text>
+        </Button>
+      )
+    }
+  }
   render () {
     return (
       <View style={styles.container}>
         <Form style={styles.authForm}>
           <Item regular style={styles.inputItemStyle}>
             <Icon active name='ios-person' />
-            <Input placeholder="Nickname" />
+            <Input placeholder="Nickname" value={this.state.nickname} onChangeText={(nickname) => { this.setState({nickname})} } />
           </Item>
           <Item regular style={styles.inputItemStyle}>
             <Icon active name='ios-person' />
-            <Input placeholder="Username" />
+            <Input placeholder="Username" value={this.state.uniqueIdentifier} onChangeText={(uniqueIdentifier) => this.setState({uniqueIdentifier})} />
           </Item>
-          <Item last regular style={styles.inputItemStyle}>
+          <Item regular style={styles.inputItemStyle}>
             <Icon active name='ios-lock' />
-            <Input placeholder="Password" />
+            <Input secureTextEntry placeholder="Password" value={this.state.password} onChangeText={(password) => {this.setState({password})}} />
           </Item>
-          <Button block style={styles.loginButton}>
-            <Text style={styles.whiteText}>Sign Up</Text>
-          </Button>
+          {this.renderRegisterButton()}
         </Form>
         <Hr color="white" width={1} style={{marginTop: 20}}>
           <Text style={styles.textWithDivider}>Register With</Text>

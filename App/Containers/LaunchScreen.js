@@ -12,7 +12,7 @@ export default class LaunchScreen extends Component {
   }
   _bootstrapAsync = async () => {
     const userToken = await AsyncStorage.getItem(JWT_TOKEN_KEY);
-    this.props.navigation.navigate(userToken ? 'AppStack' : 'AuthStack');
+    this.props.navigation.navigate(userToken ? 'AppStack' : 'AuthStack')
   };
   render () {
     return (

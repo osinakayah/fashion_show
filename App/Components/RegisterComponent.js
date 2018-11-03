@@ -59,7 +59,11 @@ export default class RegisterComponent extends Component {
           </Item>
           <Item regular style={styles.inputItemStyle}>
             <Icon active name='ios-lock' />
-            <Input secureTextEntry placeholder="Password" value={this.state.password} onChangeText={(password) => {this.setState({password})}} />
+            <Input
+              secureTextEntry
+              placeholder="Password"
+              value={this.state.password}
+              onChangeText={(password) => {this.setState({password})}} />
           </Item>
           {this.renderRegisterButton()}
         </Form>

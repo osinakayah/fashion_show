@@ -23,7 +23,7 @@ export function * getRegister (api, action) {
   // make the call to the api
   const response = yield call(api.registerUser, data)
   console.log(response)
-  const message = response.data ? response.data.message : 'Oops, an error occurred';
+  const message = response.data ? response.data.data.message : 'Oops, an error occurred';
   Snackbar.show({
     title: message,
     duration: Snackbar.LENGTH_LONG,
@@ -33,7 +33,7 @@ export function * getRegister (api, action) {
     // You might need to change the response here - do this with a 'transform',
     // located in ../Transforms/. Otherwise, just pass the data back from the api.
     if (response.data && response.data.data) {
-      yield put(NavigationActions.navigate({ routeName: 'AccountVerificationScreen', params: {token: response.data.data.token} }));
+      yield put(NavigationActions.navigate({ routeName: 'AccountVerificationScreen', params: {token: response.data.data.token.toString()} }));
     }
     yield put(RegisterActions.registerSuccess(response.data ? response.data.data : {}))
   } else {

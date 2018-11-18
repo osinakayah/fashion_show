@@ -1,4 +1,5 @@
 import { StackNavigator, SwitchNavigator } from 'react-navigation'
+import UploadDesignScreen from '../Containers/UploadDesignScreen'
 import AccountVerificationScreen from '../Containers/AccountVerificationScreen'
 import UserAccountScreen from '../Containers/UserAccountScreen'
 import FavoritesScreen from '../Containers/FavoritesScreen'
@@ -7,7 +8,7 @@ import AuthenticationScreen from '../Containers/AuthenticationScreen'
 import LaunchScreen from '../Containers/LaunchScreen';
 import styles from './Styles/NavigationStyles'
 
-const AppStack = StackNavigator({ HomeScreen, UserAccountScreen, FavoritesScreen }, {headerMode: 'none'});
+const AppStack = StackNavigator({ HomeScreen, UserAccountScreen, FavoritesScreen, UploadDesignScreen }, {headerMode: 'none'});
 const AuthStack = StackNavigator({ HomeScreen, AuthenticationScreen, AccountVerificationScreen }, {headerMode: 'none'});
 
 // Manifest of possible screens

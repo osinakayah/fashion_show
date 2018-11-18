@@ -12,6 +12,7 @@
 import Snackbar from 'react-native-snackbar';
 import { call, put } from 'redux-saga/effects'
 import TokenConfirmationActions from '../Redux/TokenConfirmationRedux'
+import {NavigationActions} from "react-navigation";
 // import { TokenConfirmationSelectors } from '../Redux/TokenConfirmationRedux'
 
 export function * getTokenConfirmation (api, action) {
@@ -21,7 +22,8 @@ export function * getTokenConfirmation (api, action) {
   // const currentData = yield select(TokenConfirmationSelectors.getData)
   // make the call to the api
   const response = yield call(api.verifyAccount, data)
-  const message = response.data ? response.data.message : 'Oops, an error occurred';
+  console.log(response)
+  const message = response.data ? response.data.data.message : 'Oops, an error occurred';
   Snackbar.show({
     title: message,
     duration: Snackbar.LENGTH_LONG,
@@ -30,6 +32,7 @@ export function * getTokenConfirmation (api, action) {
   if (response.ok) {
     // You might need to change the response here - do this with a 'transform',
     // located in ../Transforms/. Otherwise, just pass the data back from the api.
+    yield put(NavigationActions.navigate({ routeName: 'AuthenticationScreen' }));
     yield put(TokenConfirmationActions.tokenConfirmationSuccess(response.data))
   } else {
     yield put(TokenConfirmationActions.tokenConfirmationFailure())

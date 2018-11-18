@@ -36,9 +36,9 @@ export default class RegisterComponent extends Component {
     else {
       return (
         <Button block style={styles.loginButton} onPress={() => {this.props.registerUser({
-          uniqueIdentifier: this.state.uniqueIdentifier.trim(),
+          unique_identifier: this.state.uniqueIdentifier.trim(),
           password: this.state.password,
-          nickname: this.state.nickname
+          name: this.state.nickname
         })}}>
           <Text style={styles.whiteText}>Sign Up</Text>
         </Button>
@@ -55,7 +55,7 @@ export default class RegisterComponent extends Component {
           </Item>
           <Item regular style={styles.inputItemStyle}>
             <Icon active name='ios-person' />
-            <Input placeholder="Username" value={this.state.uniqueIdentifier} onChangeText={(uniqueIdentifier) => this.setState({uniqueIdentifier})} />
+            <Input placeholder="Email or Phone Number" value={this.state.uniqueIdentifier} onChangeText={(uniqueIdentifier) => this.setState({uniqueIdentifier})} />
           </Item>
           <Item regular style={styles.inputItemStyle}>
             <Icon active name='ios-lock' />

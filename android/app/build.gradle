@@ -141,13 +141,11 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-camera')
+    compile project(':react-native-background-upload')
     compile project(':react-native-snackbar')
-    compile project(':react-native-fbsdk')
-    implementation 'com.facebook.android:facebook-android-sdk:4.34.0'
-    implementation 'com.facebook.android:facebook-login:[4,5)'
     implementation "com.google.android.gms:play-services-base:15.0.1"
     implementation "com.google.firebase:firebase-core:16.0.1"
-    implementation "com.google.firebase:firebase-auth:16.0.2"
     implementation 'com.android.support:design:27.1.0'
     compile project(':react-native-firebase')
     compile project(':react-native-splash-screen')

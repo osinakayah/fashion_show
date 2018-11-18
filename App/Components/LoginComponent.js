@@ -65,7 +65,7 @@ export default class LoginComponent extends Component {
       return (
         <Button block style={styles.loginButton} onPress={() => {
           this.props.loginUser({
-            uniqueIndentifier: this.state.uniqueIdentifier.trim(),
+            unique_identifier: this.state.uniqueIdentifier.trim(),
             password: this.state.password
           });
         }}>
@@ -80,7 +80,7 @@ export default class LoginComponent extends Component {
         <Form style={styles.authForm}>
           <Item regular style={styles.inputItemStyle}>
             <Icon active name='ios-person' />
-            <Input placeholder="Username" value={this.state.uniqueIdentifier} onChangeText={(uniqueIdentifier) => this.setState({uniqueIdentifier})} />
+            <Input placeholder="Email or phone Number" value={this.state.uniqueIdentifier} onChangeText={(uniqueIdentifier) => this.setState({uniqueIdentifier})} />
           </Item>
           <Item regular style={styles.inputItemStyle}>
             <Icon active name='ios-lock' />

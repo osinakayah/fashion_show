@@ -2,7 +2,7 @@
 import apisauce from 'apisauce'
 
 // our "constructor"
-const create = (baseURL = 'http://localhost:3000/v1/auth/') => {
+const create = (baseURL = 'http://localhost:8000/api/v1/auth/') => {
   // ------
   // STEP 1
   // ------
@@ -34,11 +34,12 @@ const create = (baseURL = 'http://localhost:3000/v1/auth/') => {
   // Since we can't hide from that, we embrace it by getting out of the
   // way at this level.
   //
+  const getDesigns = () => api.get('/')
   const loginUser = (data) => api.post('login', data)
   const registerUser = (data) => api.post('register', data)
   const sendResetLink = (username) => api.get('search/users', {q: username})
   const verifyAccount = token => api.get('verify/' + token)
-  const changePassword = (uniqueIdentifier, newPassword) => api.get('search/users', {uniqueIdentifier, password: newPassword})
+  const changePassword = (uniqueIdentifier, newPassword) => api.get('search/users', {unique_identifier: uniqueIdentifier, password: newPassword})
   // ------
   // STEP 3
   // ------
@@ -57,7 +58,8 @@ const create = (baseURL = 'http://localhost:3000/v1/auth/') => {
     registerUser,
     sendResetLink,
     changePassword,
-    verifyAccount
+    verifyAccount,
+    getDesigns
   }
 }
 

@@ -1,17 +1,17 @@
 import React, { Component } from 'react'
 import { ScrollView, Text, Image, View, AsyncStorage } from 'react-native'
 import { Images } from '../Themes'
-
+import Config from '../Config/AppConfig'
 // Styles
 import styles from './Styles/LaunchScreenStyles'
-const JWT_TOKEN_KEY = 'JWT_TOKEN_KEY';
+
 export default class LaunchScreen extends Component {
   constructor(props) {
     super(props);
     this._bootstrapAsync();
   }
   _bootstrapAsync = async () => {
-    const userToken = await AsyncStorage.getItem(JWT_TOKEN_KEY);
+    const userToken = await AsyncStorage.getItem(Config.JWT_TOKEN_KEY);
     this.props.navigation.navigate(userToken ? 'AppStack' : 'AuthStack')
   };
   render () {
